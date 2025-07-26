@@ -1,4 +1,4 @@
-/* src/App.css (v.Pro) */
+/* src/App.css (v.Pro with Info Cards) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* --- Refined Color Palette --- */
@@ -38,8 +38,6 @@ body {
 }
 
 .App {
-  display: grid;
-  grid-template-rows: auto 1fr;
   min-height: 100vh;
   background-color: var(--background-dark);
   font-family: 'Inter', sans-serif;
@@ -52,11 +50,11 @@ body {
 }
 
 .App-header {
-  grid-row: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2.5rem;
+  height: 70px; /* Set a fixed height */
   /* Use a semi-transparent background to see the animation behind it */
   background-color: rgba(26, 29, 42, 0.7);
   backdrop-filter: blur(10px);
@@ -76,31 +74,19 @@ body {
   margin: 0;
 }
 
-.App-header button {
-  background: linear-gradient(90deg, var(--primary-accent), #7050f0);
-  color: var(--text-primary);
-  border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(138, 112, 255, 0.2);
-}
-
-.App-header button:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(138, 112, 255, 0.3);
-}
-
 .main-content {
-  grid-row: 2;
-  display: grid;
-  place-items: center;
-  padding: 2rem;
+  /* This will be the container for both the welcome prompt and the cards */
 }
+
+/* === SECTION FOR THE WELCOME PROMPT === */
+.connect-prompt {
+    display: grid;
+    place-items: center;
+    /* This makes the welcome section take up the full screen height minus the header */
+    min-height: calc(100vh - 70px);
+    padding: 2rem;
+}
+
 
 /* === ENHANCED PROMPT BOX === */
 .prompt-box {
@@ -156,8 +142,61 @@ body {
   font-size: 1.1rem;
   line-height: 1.6;
 }
-/* Add this to the bottom of your src/App.css file */
 
+/* === NEW & INTEGRATED INFO CARDS SECTION === */
+.info-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 6rem 2rem; /* Generous padding to create a distinct section */
+  background-color: var(--background-dark); /* Solid background to separate from gradient */
+  width: 100%;
+}
+
+.info-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 340px;
+  flex-shrink: 0;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Staggered entry animation for the cards */
+  opacity: 0;
+  animation: fadeIn-slideUp 0.8s ease-out forwards;
+}
+
+/* Stagger the animation for each card */
+.info-card:nth-child(1) { animation-delay: 0.3s; }
+.info-card:nth-child(2) { animation-delay: 0.4s; }
+.info-card:nth-child(3) { animation-delay: 0.5s; }
+
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.info-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.info-card p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+/* === WALLET CONNECTION STYLES === */
 .connection-container {
   display: flex;
   align-items: center;
@@ -181,7 +220,7 @@ body {
 }
 
 .logout-button, .connect-button {
-  background: var(--primary-accent);
+  background: linear-gradient(90deg, var(--primary-accent), #7050f0);
   color: var(--text-primary);
   border: none;
   border-radius: 8px;
@@ -190,14 +229,20 @@ body {
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(138, 112, 255, 0.2);
 }
 
 .logout-button:hover, .connect-button:hover {
-  background-color: #6A48F0; /* Slightly darker shade on hover */
-  transform: scale(1.05);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(138, 112, 255, 0.3);
 }
-/* --- Rest of the file remains the same --- */
-.loading-overlay { /* ... */ }
+
+/* === DASHBOARD & LOADING STYLES === */
+.loading-overlay {
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
 .spinner { /* ... */ }
 .producer-dashboard, .refinery-dashboard, .distributor-dashboard, .auditor-view { /* ... */ }

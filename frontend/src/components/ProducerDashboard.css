@@ -1,0 +1,245 @@
+/* --- Global Styles & Theme --- */
+:root {
+  --background-dark: #1a1d21;
+  --background-light: #2c313a;
+  --background-lighter: #3a4049;
+  --primary-accent: #4caf50; /* Green for producer */
+  --primary-accent-hover: #45a049;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --border-color: #4a5058;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --info-color: #17a2b8;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* --- Notification Banner --- */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: white;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 300px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+.notification.success { background-color: var(--success-color); }
+.notification.error { background-color: var(--error-color); }
+.notification.info { background-color: var(--info-color); }
+.notification p { margin: 0; }
+.dismiss-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* --- Main Dashboard Layout --- */
+.producer-dashboard {
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.producer-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.producer-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-accent);
+  margin: 0;
+}
+.producer-header p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* --- Form & Inventory Containers --- */
+.form-container, .inventory-container {
+  background-color: var(--background-light);
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.form-container h3, .inventory-container h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.create-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(45deg, var(--primary-accent), #388e3c);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.create-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+.create-button:disabled {
+  background: var(--background-lighter);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+/* --- Inventory Section --- */
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.inventory-header h3 {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.transfer-controls input {
+  background-color: var(--background-dark);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 0.9rem;
+}
+.transfer-controls input::placeholder {
+  color: var(--text-secondary);
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.inventory-card {
+  background-color: var(--background-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+.inventory-card:hover {
+  transform: translateY(-4px);
+}
+
+.inventory-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.inventory-info {
+  padding: 12px;
+}
+.inventory-name {
+  display: block;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inventory-id {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.transfer-button {
+  width: calc(100% - 24px);
+  margin: 0 12px 12px 12px;
+  padding: 10px;
+  background-color: var(--primary-accent);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.transfer-button:hover:not(:disabled) {
+  background-color: var(--primary-accent-hover);
+}
+.transfer-button:disabled {
+  background-color: var(--background-lighter);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+/* --- Loading & Empty States --- */
+.loading-state, .empty-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: var(--text-secondary);
+}
+
+/* --- Spinners --- */
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.spinner-large {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--text-secondary);
+  border-top-color: var(--primary-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

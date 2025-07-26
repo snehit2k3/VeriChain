@@ -1,0 +1,11 @@
+{
+  "attributes": [
+    {
+      "color": "Blue",
+      "value": "AST"
+    }
+  ],
+  "description": "Represent 1 barrel of fuel",
+  "image": "https://coffee-genetic-herring-482.mypinata.cloud/ipfs/bafybeibkjskvugtm4rruodinrl735ehn46j6guopldxnua33tithcwvtgu",
+  "name": "fuelPetroleum"
+}

@@ -1,0 +1,266 @@
+/* --- Global Styles & Dark Theme --- */
+:root {
+  --background-dark: #1a1d21;
+  --background-light: #2c313a;
+  --background-lighter: #3a4049;
+  --primary-accent: #00aaff;
+  --primary-accent-hover: #0088cc;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --border-color: #4a5058;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --info-color: #17a2b8;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* --- Main Layout --- */
+.refinery-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  overflow: hidden;
+}
+
+.action-sidebar {
+  width: 350px;
+  flex-shrink: 0;
+  background-color: var(--background-light);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: 2px 0 15px var(--shadow-color);
+}
+
+.inventory-display {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+/* --- Sidebar Content --- */
+.sidebar-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--primary-accent);
+}
+.sidebar-header p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.sidebar-content {
+  margin-top: 40px;
+}
+.sidebar-content h2 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+.step-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background-color: var(--background-dark);
+  padding: 12px;
+  border-radius: 8px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.account-address {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* --- Refine Button & Status --- */
+.refine-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(45deg, var(--primary-accent), #0077b3);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.refine-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+}
+.refine-button:disabled {
+  background: var(--background-lighter);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.status-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+.status-message.success { background-color: rgba(40, 167, 69, 0.2); color: #81c784; }
+.status-message.error { background-color: rgba(220, 53, 69, 0.2); color: #e57373; }
+.status-message.info { background-color: rgba(23, 162, 184, 0.2); color: #64b5f6; }
+.status-message p { margin: 0; }
+.status-icon { font-size: 1.2rem; }
+
+
+/* --- Inventory Display --- */
+.inventory-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+.inventory-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.inventory-grid-container {
+  padding: 24px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.token-group h3 {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.nft-grid {
+  display: grid;
+  /* UPDATED: Reduced the minimum card size for a more compact grid */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+/* --- NFT Card --- */
+.nft-card {
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+.nft-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-accent);
+  box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+}
+.nft-card.selected {
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
+  transform: scale(1.05);
+}
+.nft-card.non-selectable {
+  cursor: default;
+}
+.nft-card.non-selectable:hover {
+  transform: none;
+  border-color: var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.nft-card-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+}
+.nft-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.token-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 6px;
+  color: white;
+  text-transform: uppercase;
+}
+.token-badge.raw { background-color: rgba(255, 165, 0, 0.8); }
+.token-badge.refined { background-color: rgba(0, 170, 255, 0.8); }
+
+.nft-info {
+  padding: 12px;
+  text-align: center;
+}
+.nft-name {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nft-id {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* --- Loading & Empty States --- */
+.loading-container, .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-secondary);
+}
+.empty-state h3 {
+  color: var(--text-primary);
+}
+
+/* --- Spinner Animation --- */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--primary-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

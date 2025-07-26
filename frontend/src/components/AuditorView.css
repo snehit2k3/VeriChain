@@ -1,0 +1,121 @@
+/* --- Base Styles --- */
+.auditor-view {
+  /* ⭐ FIXED: Set width to a percentage for a much wider view */
+  width: 90%;
+  max-width: 1200px; /* Sets a new upper limit for very large screens */
+
+  padding: 2rem;
+  margin: 2rem auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.auditor-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+}
+
+.auditor-header h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.auditor-header p {
+  font-size: 1.1rem;
+  color: #d1d5db;
+}
+
+/* --- Timeline Styles --- */
+.timeline {
+  position: relative;
+}
+/* Vertical line for the timeline */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 21px; 
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 1rem;
+  position: relative;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.timeline-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(10px);
+}
+
+.timeline-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.5rem;
+  z-index: 1;
+  border: 3px solid transparent;
+  flex-shrink: 0;
+}
+
+.timeline-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.event-keyword {
+  font-weight: 700;
+}
+
+/* --- Event-Specific Colors --- */
+
+/* CREATED Event */
+.timeline-item.created .timeline-icon {
+  background-color: #166534; /* Dark Green */
+  border-color: #4ade80; /* Bright Green */
+}
+.timeline-item.created .event-keyword {
+  color: #4ade80;
+}
+
+/* TRANSFERRED Event */
+.timeline-item.transferred .timeline-icon {
+  background-color: #1d4ed8; /* Dark Blue */
+  border-color: #60a5fa; /* Bright Blue */
+}
+.timeline-item.transferred .event-keyword {
+  color: #60a5fa;
+}
+
+/* BURNED Event */
+.timeline-item.burned .timeline-icon {
+  background-color: #991b1b; /* Dark Red */
+  border-color: #f87171; /* Bright Red */
+}
+.timeline-item.burned .event-keyword {
+  color: #f87171;
+}
+
+/* Loading and Empty States */
+.loading-feed, .empty-feed {
+  text-align: center;
+  padding: 3rem 0;
+  font-size: 1.1rem;
+  color: #9ca3af;
+}
